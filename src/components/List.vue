@@ -1,6 +1,7 @@
 <template>
   <div>
     <div id="myChart" :style="{width: '600px', height: '300px'}"></div>
+    <div id="myChartPie" :style="{width: '600px', height: '300px'}"></div>
   </div>
 </template>
  
@@ -32,6 +33,38 @@ export default {
                 type: 'bar',
                 data: [5, 20, 36, 10, 10, 20]
             }]
+        });
+
+
+        let myChartPie = this.$echarts.init(document.getElementById('myChartPie'))
+        // 绘制图表
+        myChartPie.setOption({
+            backgroundColor: '#2c343c',
+            itemStyle: {
+                // 阴影的大小
+                shadowBlur: 200,
+                // 阴影水平方向上的偏移
+                shadowOffsetX: 0,
+                // 阴影垂直方向上的偏移
+                shadowOffsetY: 0,
+                // 阴影颜色
+                shadowColor: 'rgba(0, 0, 0, 0.5)'
+            },
+            roseType: 'angle',
+            series : [
+                {
+                    name: '访问来源',
+                    type: 'pie',
+                    radius: '90%',
+                    data:[
+                        {value:235, name:'视频广告'},
+                        {value:274, name:'联盟广告'},
+                        {value:310, name:'邮件营销'},
+                        {value:335, name:'直接访问'},
+                        {value:400, name:'搜索引擎'}
+                    ]
+                }
+            ]
         });
     }
   }
